@@ -5,7 +5,7 @@ public class Camera : MonoBehaviour {
 
     public float damping = 1.5f;
     public Vector2 offset = new Vector2(2f, 1f);
-    public bool faceLeft;
+    public static bool faceLeft;
     private Transform player;
     private int lastX;
 
