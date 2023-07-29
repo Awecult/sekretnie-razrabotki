@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 217875099}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +173,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.023883864}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -184,7 +184,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.95223224}
   m_EdgeRadius: 0
 --- !u!212 &217875100
 SpriteRenderer:
@@ -247,8 +247,8 @@ Transform:
   m_GameObject: {fileID: 217875098}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3838, y: -3.11, z: 0}
-  m_LocalScale: {x: 11.8221655, y: 1, z: 1}
+  m_LocalPosition: {x: -4.3422, y: -3.11, z: 0}
+  m_LocalScale: {x: 21.273987, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 323535283}
   - component: {fileID: 323535286}
   - component: {fileID: 323535285}
+  - component: {fileID: 323535287}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -398,7 +399,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.025071561}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -409,8 +410,24 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.0501431}
   m_EdgeRadius: 0
+--- !u!114 &323535287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323535282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3882ce5c7f1f6164ca3f2d2f1e3af326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpheight: 10
+  groundCheck: {fileID: 217875101}
+  isGrounded: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,9 +533,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf911249353e8f47939e58c8ff3212b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damping: 1.5
+  damping: 2
   offset: {x: 1.5, y: 2}
-  faceLeft: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
