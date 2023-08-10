@@ -5,27 +5,37 @@ using UnityEngine;
 
 public class MoveTest : MonoBehaviour
 {
+    [Header("PlayerSettings")]
     Rigidbody2D rb;
     public float speed;
+    public float dashSpeed;
     public float jumpheight;
-    public Transform groundCheck;
     public bool isGrounded = false;
     Animator anim;
+    public float healthPoint = 100;
 
     void Start()    
     {
         rb = GetComponent<Rigidbody2D>();
-        groundCheck = GameObject.FindGameObjectWithTag("Ground").transform;
     }
     void Update()
     {
         Flip();
-        CheckGround();
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
             rb.AddForce(transform.up * jumpheight, ForceMode2D.Impulse);
-
+        }
+        if(healthPoint <= 0) {
+            Destroy(gameObject);
+        }
     }
+
+    void FixedUpdate() {
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
+        if (Input.GetKeyDown(KeyCode.C) && isGrounded) {
+            rb.AddForce(transform.right * dashSpeed, ForceMode2D.Impulse);
+        }
+    }
+
     void Flip()
     {
         if (Input.GetAxis("Horizontal") > 0)
@@ -39,18 +49,13 @@ public class MoveTest : MonoBehaviour
         {
             isGrounded = true;
         }
+        if(collision.gameObject.tag == "Enemy")
+        {
+            healthPoint -= 10;
+        }
     }
     void OnCollisionExit2D(Collision2D collision) {
         isGrounded = false;
-    }
+    } 
 
-    void CheckGround()
-    {
-        /*if (OnCollisionStay2D == true) 
-        {
-            isGrounded
-        }*/
-        //Collider2D[] colliders = Physics2D.OverlapBoxAll(groundCheck.position, BoxSize, 0);
-        //isGrounded = colliders.Length > 1;
-    }
 }
